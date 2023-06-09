@@ -1,1 +1,5 @@
+//brute force- create all permutations, search the input, print next permutation
+//better- use stl next_permutation
+//optimal-find break points,if no breakpoint exists, probably this is a sorted array, so return its reverse
+//if you get a breakpoint ~ find the smallest number which is greater than a[i] and swap it with arr[i], reverse the entire right half and return the array
 
