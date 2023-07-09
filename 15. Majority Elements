@@ -1,0 +1,19 @@
+#include <bits/stdc++.h>
+
+
+int findMajorityElement(int arr[], int n) {
+	unordered_map<int,int> freq;
+	for(int i=0;i<n;i++)
+	{
+		freq[arr[i]]++;
+	}
+	for(auto itr:freq)
+	{
+		if(itr.second>(n/2))
+		{
+		return itr.first;
+		}
+	}
+	return -1;
+	// Write your code here.
+}
