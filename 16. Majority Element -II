@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+
+vector<int> majorityElementII(vector<int> &arr)
+{
+    int n=arr.size();
+    vector<int> f;
+    unordered_map<int,int> freq;
+	for(int i=0;i<n;i++)
+	{
+		freq[arr[i]]++;
+	}
+	for(auto itr:freq)
+	{
+		if(itr.second>(n/3))
+		{
+		f.push_back(itr.first);
+		}
+	}
+    return f;
+	
+
+}
