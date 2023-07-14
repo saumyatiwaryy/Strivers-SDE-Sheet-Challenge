@@ -1,0 +1,45 @@
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    vector<Node*> neighbors;
+    Node() {
+        val = 0;
+        neighbors = vector<Node*>();
+    }
+    Node(int _val) {
+        val = _val;
+        neighbors = vector<Node*>();
+    }
+    Node(int _val, vector<Node*> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+};
+Approach for this Problem :
+Initialize an empty unordered map to keep track of nodes that have already been cloned.
+Check if the input node is null. If it is, return null.
+Check if the input node already exists in the map. If it does, return its corresponding clone.
+If the node is new, create a new clone with the same value as the input node and add it to the map.
+Iterate through each of the input node's neighbors and recursively clone them, adding them to the clone's list of neighbors.
+Return the clone of the input node.
+*/
+
+class Solution {
+public:
+    unordered_map<Node*, Node*> cloningGraph;
+    
+    Node* cloneGraph(Node* node) {
+        if (node == nullptr) {
+            return nullptr;
+        }
+        if (cloningGraph.find(node) == cloningGraph.end()) {
+            cloningGraph[node] = new Node(node -> val);
+            for (auto neighbor : node -> neighbors) {
+                cloningGraph[node] -> neighbors.push_back(cloneGraph(neighbor));
+            }
+        }
+        return cloningGraph[node];
+    }
+};
